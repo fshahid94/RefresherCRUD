@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+
+<div class="container"> 
+        <table class="table table-striped table-hover table-bordered">
+                <tr style="background-color:#0f7faf; color:white">
+                    <th>Id</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Age</th>
+                    <th>Birthdate</th>
+                    <th>Country</th>
+                </tr>
+        
+                <tr id="rows">
+        
+                </tr>
+            </table>
+</div>
+
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script>
+        $.ajax({
+            url: "http://localhost:8089/farhan2018/RefresherCRUD/employeelist2.php",
+            type: "GET",
+            data: {firstname:"Iqbal"},
+            success: function (data) {
+                //console.log((JSON.parse(data))[0]);
+                var json = JSON.parse(data);
+                for (var i = 0; i < json.length; i++) {
+                    //for (var j = 0; j < 6; j++) {
+                        // $("#rows").html("<td>" + json[i][j] + "</td>");
+                        // $("#rows").html("<td>" + json[i][j] + "</td>");
+                        // $("#rows").html("<td>" + json[i][j] + "</td>");
+                        // $("#rows").html("<td>" + json[i][j] + "</td>");
+                        // $("#rows").html("<td>" + json[i][j] + "</td>");
+
+                        $("#rows").append("<td>" + json[i]['Id'] + "</td>");
+                        $("#rows").append("<td>" + json[i]['LastName'] + "</td>");
+                        $("#rows").append("<td>" + json[i]['FirstName'] + "</td>");
+                        $("#rows").append("<td>" + json[i]['Age'] + "</td>")
+                        $("#rows").append("<td>" + json[i]['BirthDate'] + "</td>");
+                        $("#rows").append("<td>" + json[i]['country_name'] + "</td>");
+                    //}
+                }
+            }
+        });
+    </script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>
